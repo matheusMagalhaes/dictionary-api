@@ -1,12 +1,16 @@
 const axios = require("axios");
-const { addToHistory } = require("../services/history.service");
+const { saveSearch } = require("../services/history.service");
 
 const getWordDefinition = async (req, res) => {
   const word = req.params.word;
+  console.log(req.user)
+  const userID = req.user.id;
 
   try {
     const response = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
-  
+   
+    await saveSearch(word, userID);
+
     res.json(response.data);
   } catch (error) {
     if(error.response && error.response.status === 404){
