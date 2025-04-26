@@ -1,9 +1,7 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const {getWordDefinition} = require('../controllers/dictionary.controller')
-
-router.get('/definition/:word', getWordDefinition);
-
+router.use("/auth", require("./auth.routes"));
+router.use("/dictionary", require("./dictionary.routes"));
 
 module.exports = router;
