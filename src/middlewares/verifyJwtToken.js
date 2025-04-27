@@ -13,7 +13,7 @@ const verifyToken = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDUsIm5hbWUiOiJ0aWEiLCJpYXQiOjE3NDU2NTAyMTd9.XJrBAiD_1Ip51STK3NSIgpoqQMXI0rN0o0iGE0wRh-I");
+    const decoded = jwt.verify(token, process.env.SECRET_KEY);
     req.user = decoded;
     next();
   } catch (error) {

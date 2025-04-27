@@ -18,11 +18,11 @@ services:
     ports:
       - "3000:3000"
     environment:
-      DB_USER: dictionary_user
+      DB_USER: ${DB_USER}
       DB_HOST: db 
-      DB_NAME: dictionary_db
-      DB_PASSWORD: 74031601528
-      DB_PORT: 5432
+      DB_NAME: ${DB_NAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_PORT: ${DB_PORT}
       JWT_SECRET: ${SECRET_KEY}
     depends_on:
       - db

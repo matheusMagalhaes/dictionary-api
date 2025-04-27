@@ -5,7 +5,7 @@ const getDictionaryHistory = async (req, res) => {
     const userId = req.user.id;
 
     const result = await pool.query(
-      "SELECT WORD, searchedat, user_id FROM word_history WHERE USER_ID = $1 ORDER BY searchedat DESC",
+      "SELECT WORD, searched_at, user_id FROM word_history WHERE USER_ID = $1 ORDER BY searched_at DESC",
       [userId]
     );
 
