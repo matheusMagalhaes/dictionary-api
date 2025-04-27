@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: dictionary_user
+      POSTGRES_PASSWORD: 74031601528
+      POSTGRES_DB: dictionary_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./src/database:/docker-entrypoint-initdb.d
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      DB_USER: dictionary_user
+      DB_HOST: db 
+      DB_NAME: dictionary_db
+      DB_PASSWORD: 74031601528
+      DB_PORT: 5432
+      JWT_SECRET: ${SECRET_KEY}
+    depends_on:
+      - db
+    command: npm start
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+volumes:
+  pgdata:
