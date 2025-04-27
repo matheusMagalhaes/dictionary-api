@@ -102,4 +102,26 @@ docker-compose up --build
 ````
 http://localhost:3000
 ````
-  
+
+---------------------------------------------------------------------------
+
+
+**Decisões e por que?: **
+- **Node + Express**
+Optei pelo Node devido a simplicidade e praticidade na hora de construir uma API leve, principalmente monolítico. Como o teste era de certo modo simples, node me parece uma solução mais eficiente em menos tempo.
+
+- **PostgreSQL**
+Decidi por um banco relacional porque os tipos de dados são mais estruturados e mais simples, não vi necessidade por um banco NoSQL ate porque os tipos de dados são do mesmo tipo. Escolhi o PostgreSQL em relação ao MySql por ter mais experiência com o PostgreSQL e tambem por ser mais fácil de trabalhar(um gosto mais pessoal talvez).
+
+- **Docker**
+Utilizei o Docker também pela facilidade de configuração e garantia que a aplicação rode em qualquer máquina, já que isolar a infraestrutura em container ajuda a reduzir os problemas de configuração.
+
+--------------------------------------------------------------------------------------------
+A **princípio**, a ideia era construir um mini sisteminha que salvasse o histórico de buscas por usuário.
+
+**requisitos que criei:**
+- Separar os usuários.
+- Identificá-los de maneira segura e prática.
+
+Para atender, já me veio na mente que eu precisava autenticar meu usuário por token, utilizei o JWT pela praticidade e também porque faria mais sentido com o contexto. Dessa forma, optei por gerar os tokens no momento do registro para que cada pesquisa de termo ou histórico pudesse ser autenticada e vinculado ao respectivo usuário. 
+
