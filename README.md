@@ -41,6 +41,11 @@ DB_PASSWORD=sua_senha
 DB_PORT=5432
 SECRET_KEY=chave_secreta
 ````
+para gerar uma secret_key (opcional)
+```
+node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+```
+
 4 - Rode o projeto 
 ````
 npm run dev 
