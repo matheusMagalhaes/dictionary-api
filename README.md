@@ -1,7 +1,7 @@
 📚 ** Dictionary API** 
 
 
-API simples para pesquisa de definições de palavras em inglês com cadastro de usuários, autenticação JWT e histórico de pesquisas. 
+API simples em arquitetura MVC para pesquisa de definições de palavras em inglês com cadastro de usuários, autenticação JWT e histórico de pesquisas. 
 
 A API conta com o  [Free Dictionary API]([url](https://dictionaryapi.dev/)), webservice de consulta de palavras utilizando como fonte para as definções
 
