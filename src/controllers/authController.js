@@ -19,10 +19,10 @@ const register = async (req, res) => {
     const user = result.rows[0];
     
     const token = jwt.sign({ id:user.id , name: user.name}, process.env.SECRET_KEY);
-    res.json({ token });
+    res.status(200).json({ token });
 
   } catch (error) {
-    console.log(error)
+    console.error(error)
     if (error.code === "23505") {
       res.status(400).json({ error: "User already exists" });
     }
