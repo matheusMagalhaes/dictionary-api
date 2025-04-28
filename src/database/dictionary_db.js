@@ -9,7 +9,4 @@ const pool = new Pool({
   port: process.env.DB_PORT,
 });
 
-pool.query("SELECT 1", (err) =>
-  console.log(err ? "❌ Database conection failed" : "✅ Database Conected!")
-);
 module.exports = pool;
