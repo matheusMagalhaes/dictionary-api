@@ -18,6 +18,8 @@ A API conta com o  [Free Dictionary API]([url](https://dictionaryapi.dev/)), web
  - JWT para autenticação
 
  - Axios para requisições HTTP
+ 
+ - Jest para teste unitário
 
 ---------------------------------------------------------------------------
 ⚙ Instalação: 
@@ -108,15 +110,23 @@ docker-compose up --build
 http://localhost:3000
 ````
 
----------------------------------------------------------------------------
 
+
+🧪 **Teste unitátio:**
+testes unitários criados com Jest para testar crianção de usuário e verificão de duplicidade do mesmo 
+
+```
+npm test
+```
+
+---------------------------------------------------------------------------
 
 **Decisões e por que?: **
 - **Node + Express**
 Optei pelo Node devido a simplicidade e praticidade na hora de construir uma API leve, principalmente monolítico. Como o teste era de certo modo simples, node me parece uma solução mais eficiente em menos tempo.
 
 - **PostgreSQL**
-Decidi por um banco relacional porque os tipos de dados são mais estruturados e mais simples, não vi necessidade por um banco NoSQL ate porque os tipos de dados são do mesmo tipo. Escolhi o PostgreSQL em relação ao MySql por ter mais experiência com o PostgreSQL e tambem por ser mais fácil de trabalhar(um gosto mais pessoal talvez).
+Decidi por um banco relacional porque os tipos de dados são ma🧪is estruturados e mais simples, não vi necessidade por um banco NoSQL ate porque os tipos de dados são do mesmo tipo. Escolhi o PostgreSQL em relação ao MySql por ter mais experiência com o PostgreSQL e tambem por ser mais fácil de trabalhar(um gosto mais pessoal talvez).
 
 - **Docker**
 Utilizei o Docker também pela facilidade de configuração e garantia que a aplicação rode em qualquer máquina, já que isolar a infraestrutura em container ajuda a reduzir os problemas de configuração.
