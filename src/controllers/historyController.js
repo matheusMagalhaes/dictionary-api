@@ -1,19 +1,20 @@
-const pool = require("../database/dictionary_db");
+const prisma = require("../globals/prisma");
 
 const getDictionaryHistory = async (req, res) => {
   try {
     const userId = req.user.id;
 
-    const result = await pool.query(
-      "SELECT WORD, searched_at, user_id FROM word_history WHERE USER_ID = $1 ORDER BY searched_at DESC",
-      [userId]
-    );
+    const result = await prisma.word_history.findMany({
+      where: {
+        user_id: userId,
+      },
+    });
 
-    res.json(result.rows);
+    res.status(200).json(result);
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Internal server error" });
   }
 };
 
-module.exports = {getDictionaryHistory};
+module.exports = { getDictionaryHistory };

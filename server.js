@@ -1,11 +1,20 @@
+const { PrismaClient } = require("./src/generated/prisma");
+const prisma = new PrismaClient();
 const app = require("./src/app");
-const port = process.env.port || 3000;
-const pool = require('./src/database/dictionary_db');
-
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(`Dictionary API online :) \nlistening on ${port}`);
 });
-pool.query("SELECT 1", (err) =>
-  console.log(err ? "❌ Database conection failed" : "✅ Database Conected!")
-);
+
+async function startSever() {
+  try {
+    await prisma.$connect();
+    console.log("✅ Database connected!");
+  } catch (error) {
+    console.error("❌ Database connection failed:", err);
+  }
+}
+
+startSever();startSever
+

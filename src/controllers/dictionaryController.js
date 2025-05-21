@@ -1,15 +1,19 @@
 const axios = require("axios");
-const { saveSearch } = require("../services/history.service");
+const prisma = require("../globals/prisma");
 
 const getWordDefinition = async (req, res) => {
   const word = req.params.word;
-  console.log(req.user)
   const userID = req.user.id;
 
   try {
     const response = await axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
-   
-    await saveSearch(word, userID);
+    
+    await prisma.word_history.create({
+      data: {
+        word: word,
+        user_id: userID
+      }
+    });
 
     res.json(response.data);
   } catch (error) {
@@ -21,8 +25,6 @@ const getWordDefinition = async (req, res) => {
     res.status(500).json({error: "Internal server error"})
   }
 };
-
-
 
 
 module.exports = { getWordDefinition };
